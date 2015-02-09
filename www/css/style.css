@@ -1,5 +1,3 @@
-/* Empty. Add your own CSS if you like */
-
 .section {
     width: 100%;
     margin-right: 5%;
@@ -7,31 +5,15 @@
     vertical-align: top;
 }
 
-.image-wrap {
-    width: 100%;
-    margin: 5px auto;
-    border: 2px solid #fff;
-    padding: 0;
-    position: relative;
-    background:gold;
-}
-
-.image-wrap>img {
-    width: 100%;
-    /*position: relative;*/
-}
-
-
 .loader {
     width: 100%;
-    margin: 5px auto;
-    border: 2px solid #fff;
-    padding: 0;
+    display: inline-block;
     position: relative;
-    background:gold;
+    background: gold;
 }
 
 .loader img {
+    position: absolute;
     opacity: 0;
     width: 100%;
     transition: opacity .5s linear;
@@ -40,13 +22,3 @@
 .loader.complete img {
     opacity: 1;
 }
-
-
-/* image loading */
-
-/*.spinner-hide .loading{*/
-    /*visibility: visible;*/
-/*}*/
-/*.spinner-show .loading{*/
-    /*visibility: hidden;*/
-/*}*/

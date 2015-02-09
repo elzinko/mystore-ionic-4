@@ -112,7 +112,7 @@ angular.module('starter.directives', [])
         loader.replace = true;
         loader.scope = {src: "=", padding: "="};
 
-        loader.template = '<div ng-class="{complete: isLoaded }" style="padding-bottom:{{padding}}%"><img ng-src="{{src}}"></div>';
+        loader.template = '<div ng-class="{complete: isLoaded }"><img ng-src="{{src}}"></div>';
 
         loader.link = function (scope, element, attrs, gallerie) {
             element.find('img').on('load', function () {
