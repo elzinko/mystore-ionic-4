@@ -1,0 +1,26 @@
+<ion-view view-title="Gallery">
+    <ion-content>
+        <div resizable class="page" ng-style="{ width: windowWidth, height: windowHeight, 'background-color': 'violet' }">
+            <p>current windowWidth = {{windowWidth}}</P>
+            <p>current windowHeight = {{windowHeight}}</P>
+        </div>
+        <div class="page" ng-style="{ width: windowWidth, height: windowHeight, 'background-color': 'violet' }">
+            <p>current my width = {{size('width')}}</P>
+            <p>current my height = {{size('height')}}</P>
+        </div>
+        <div class="section">
+            <gallerie>
+                <div ng-repeat="photo in Gallery.photos" >
+                <!--<img mysrcloader="{{photo.url}}" />-->
+                <!--<img src='{{photo.url}}' imageonload>-->
+                <!--<span class="loading">-->
+                    <!--<img src="https://www.yugma.com/images/loading-animation-7.gif"/>-->
+
+                    <loader class="loader" src="photo.url" padding="photo.padding"></loader>
+                </div>
+            </gallerie>
+        </div>
+        <ion-infinite-scroll on-infinite="loadMore()" ng-if="Gallery.more" distance="2%"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>
+
