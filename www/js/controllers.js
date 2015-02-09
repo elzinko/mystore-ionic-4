@@ -17,13 +17,14 @@ angular.module('starter.controllers', ['ionic'])
         }
     })
 
-    .controller('GalleryCtrl', function ($scope, Gallery, Size) {
-        $scope.size = Size;
-        $scope.Gallery = new Gallery();
-        $scope.loadMore = function() {
-            $scope.Gallery.loadMorePhotos();
+    .controller('GalleryCtrl', ['$scope', 'gallery', 'sizeListener', function ($scope, gallery, sizeListener) {
+        console.log('GalleryCtrl loading ...');
+        $scope.gallery = gallery;
+        $scope.sizeListener = sizeListener;
+        $scope.loadMore = function () {
+            $scope.gallery.loading();
             console.log('$broadcast scroll.infiniteScrollComplete');
             $scope.$broadcast('scroll.infiniteScrollComplete');
         }
-
-    });
+        console.log('GalleryCtrl loaded');
+    }]);
