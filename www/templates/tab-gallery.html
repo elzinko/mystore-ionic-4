@@ -2,8 +2,9 @@
     <ion-content>
         <div class="section">
             <gallerie>
-                <loader ng-repeat="photo in gallery.photos" class="loader" style="padding-bottom:{{photo.padding}}%"
-                        src="photo.url" padding="photo.padding"></loader>
+                <div ng-repeat="photo in gallery.photos">
+                    <loader class="loader" src="photo.url" style="padding-bottom:{{photo.padding}}%"></loader>
+                </div>
             </gallerie>
         </div>
         <ion-infinite-scroll on-infinite="loadMore()" ng-if="gallery.more" distance="2%"></ion-infinite-scroll>

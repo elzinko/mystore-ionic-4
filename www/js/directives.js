@@ -21,7 +21,7 @@ angular.module('starter.directives', [])
         loader.restrict = 'E';
         loader.require = '^gallerie';
         loader.replace = true;
-        loader.scope = {src: "=", padding: "="};
+        loader.scope = {src: "="};
 
         loader.template = '<div ng-class="{complete: isLoaded }"><img ng-src="{{src}}"></div>';
 

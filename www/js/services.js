@@ -60,12 +60,12 @@ angular.module('starter.services', [])
                 } else {
                     var data = [];
                     for (var i = l; i < l + 4; i++) {
-                        var height = windowSize.getHeight();
                         var width = windowSize.getWidth();
+                        var height = ~~(Math.random() * 600) + 400;
                         var padding = (height / width) * 100;
                         console.log("loader height : " + height);
                         console.log("loader width : " + width);
-                        console.log("loader pading : " + padding);
+                        console.log("loader padding : " + padding);
                         var id = ~~(Math.random() * 1000);
                         data.push({
                             "url": 'http://lorempixel.com/g/' + width + '/' + height/* + '/?' + id*/,
