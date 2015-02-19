@@ -29,36 +29,34 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 's
         // Each state's controller can be found in controllers.js
         $stateProvider
 
-            // setup an abstract state for the tabs directive
-            .state('tab', {
-                url: "/tab",
+            // Each tab has its own nav history stack:
+            .state('eventmenu', {
+                url: "/event",
                 abstract: true,
-                templateUrl: "templates/tabs.html"
+                templateUrl: "templates/event-menu.html"
             })
 
-            // Each tab has its own nav history stack:
-
-            .state('tab.photos', {
+            .state('eventmenu.photos', {
                 url: '/photos',
                 views: {
-                    'tab-photos': {
-                        templateUrl: 'templates/tab-photos.html',
+                    'menuContent': {
+                        templateUrl: 'templates/photos.html',
                         controller: 'PhotosCtrl'
                     }
                 }
             })
 
-            .state('tab.gallery', {
+            .state('eventmenu.gallery', {
                 url: '/gallery',
                 views: {
-                    'tab-gallery': {
-                        templateUrl: 'templates/tab-gallery.html',
+                    'menuContent': {
+                        templateUrl: 'templates/gallery.html',
                         controller: 'GalleryCtrl'
                     }
                 }
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/gallery');
+        $urlRouterProvider.otherwise('/event/gallery');
 
     });
