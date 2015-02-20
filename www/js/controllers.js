@@ -27,4 +27,17 @@ angular.module('starter.controllers', ['ionic'])
             $scope.$broadcast('scroll.infiniteScrollComplete');
         }
         console.log('GalleryCtrl loaded');
+    }])
+
+    .controller('StoreCtrl', ['$scope', 'photo', 'store', function ($scope, photo, store) {
+        $scope.photo = photo;
+        console.log('StoreCtrl loading ' + $scope.photo);
+        //$scope.store = store;
+        //$scope.sizeListener = sizeListener;
+        $scope.loadMoreStorePhotos = function () {
+            $scope.store.loading();
+            console.log('$broadcast scroll.infiniteScrollComplete');
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+        }
+        console.log('StoreCtrl loaded');
     }]);

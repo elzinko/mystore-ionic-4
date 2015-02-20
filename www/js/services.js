@@ -49,8 +49,51 @@ angular.module('starter.services', [])
         var gallery = {};
         gallery.photos = [];
         gallery.more =true;
+        gallery.get = function(storeId) {
+          //return this.photos.get({id: storeId});
+            return this.photos[storeId];
+        };
         gallery.loading = function () {
             console.log('gallery.load');
+            if (this.more) {
+                console.log("need more photos");
+                var l = this.photos.length;
+                if (l >= 60) {
+                    this.more = false;
+                    console.log("no More photos available");
+                } else {
+                    var data = [];
+                    for (var i = l; i < l + 4; i++) {
+                        var width = windowSize.getWidth();
+                        var height = ~~(Math.random() * 600) + 400;
+                        var padding = (height / width) * 100;
+                        console.log("loader height : " + height);
+                        console.log("loader width : " + width);
+                        console.log("loader padding : " + padding);
+                        var id = ~~(Math.random() * 1000);
+                        data.push({
+                            "url": 'http://lorempixel.com/g/' + width + '/' + height/* + '/?' + id*/,
+                            "id":i,
+                            "height": height,
+                            "width": width,
+                            "padding": padding
+                        });
+                    }
+                    this.photos = this.photos.concat(data);
+                    console.log('photos size : ' + this.photos.length);
+                }
+            }
+        }
+
+        return gallery;
+    })
+    .factory('store', function (windowSize) {
+        console.log('store');
+        var store = {};
+        store.photos = [];
+        store.more =true;
+        store.loading = function (storeId) {
+            console.log('store load ' + storeId);
             if (this.more) {
                 console.log("need more photos");
                 var l = this.photos.length;
@@ -80,5 +123,5 @@ angular.module('starter.services', [])
             }
         }
 
-        return gallery;
-});
+        return store;
+    });

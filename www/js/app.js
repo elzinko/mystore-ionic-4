@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'starter.directives'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives'])
 
     .config(function ($compileProvider) {
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
@@ -21,6 +21,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 's
             }
         });
     })
+
     .config(function ($stateProvider, $urlRouterProvider) {
 
         // Ionic uses AngularUI Router which uses the concept of states
@@ -30,13 +31,13 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 's
         $stateProvider
 
             // Each tab has its own nav history stack:
-            .state('eventmenu', {
-                url: "/event",
+            .state('menu', {
+                url: "/menu",
                 abstract: true,
                 templateUrl: "templates/event-menu.html"
             })
 
-            .state('eventmenu.photos', {
+            .state('menu.photos', {
                 url: '/photos',
                 views: {
                     'menuContent': {
@@ -46,7 +47,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 's
                 }
             })
 
-            .state('eventmenu.gallery', {
+            .state('menu.gallery', {
                 url: '/gallery',
                 views: {
                     'menuContent': {
@@ -54,9 +55,56 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 's
                         controller: 'GalleryCtrl'
                     }
                 }
+            })
+            .state('menu.store', {
+                url: '/store/:storeId',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/store.html',
+                        controller: 'StoreCtrl',
+                        resolve: {
+                            photo: function($stateParams, gallery) {
+                                return gallery.get($stateParams.storeId)
+                            }
+                        }
+                        //params: ['storeId']
+                    }
+                }
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/event/gallery');
+        $urlRouterProvider.otherwise('/menu/gallery');
 
     });
+
+    //.config(function($routeProvider) {
+    //
+    //    // Set up the initial routes that our app will respond to.
+    //    // These are then tied up to our nav router which animates and
+    //    // updates a navigation bar
+    //    $routeProvider.when('/gallery', {
+    //        templateUrl: 'templates/gallery.html',
+    //        controller: 'GalleryCtrl'
+    //    });
+    //
+    //    // if the url matches something like /pet/2 then this route
+    //    // will fire off the PetCtrl controller (controllers.js)
+    //    $routeProvider.when('/store/:storeId', {
+    //        templateUrl: 'templates/store.html',
+    //        controller: 'StoreCtrl'
+    //    });
+    //
+    //    // if the url matches something like /pet/2 then this route
+    //    // will fire off the PetCtrl controller (controllers.js)
+    //    $routeProvider.when('/photos', {
+    //        templateUrl: 'templates/photos.html',
+    //        controller: 'PhotosCtrl'
+    //    });
+    //
+    //    // if none of the above routes are met, use this fallback
+    //    // which executes the 'AppCtrl' controller (controllers.js)
+    //    $routeProvider.otherwise({
+    //        redirectTo: '/gallery'
+    //    });
+    //
+    //});

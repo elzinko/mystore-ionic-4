@@ -3,7 +3,7 @@
         <div class="section">
             <gallerie>
                 <div ng-repeat="photo in gallery.photos">
-                    <loader class="loader" src="photo.url" style="padding-bottom:{{photo.padding}}%"></loader>
+                    <loader class="loader" src="photo.url" id="photo.id" style="padding-bottom:{{photo.padding}}%"></loader>
                 </div>
             </gallerie>
         </div>

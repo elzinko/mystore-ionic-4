@@ -1,0 +1,12 @@
+<ion-view view-title="store">
+    <ion-content>
+        <div class="section">
+            <gallerie>
+                <div ng-repeat="photo in store.photos">
+                    <loader class="loader" src="photo.url" style="padding-bottom:{{photo.padding}}%"></loader>
+                </div>
+            </gallerie>
+        </div>
+        <ion-infinite-scroll on-infinite="loadMoreStorePhotos()" ng-if="store.more" distance="2%"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>
